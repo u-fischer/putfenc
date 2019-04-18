@@ -8,7 +8,9 @@ A (virtual) fontencoding to enable with pdflatex the use of non-ascii input in q
 
 ![qrcode](qrcode.PNG)
 
-See the putftest.tex for example of usage.
+## Usage
+
+See the putftest.tex (in german currently) for example of usage.
 
 ## Licence
 
