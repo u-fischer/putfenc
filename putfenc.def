@@ -1,7 +1,7 @@
 %%
 % \edef\foo{\noexpand\DeclareTextCommand{\noexpand\ss}{PUTF}{\detokenize{\detokenize{^^c3^^9f}‌​}}}\foo
 \ProvidesFile{putfenc.def}
-  [2019/04/18 v0.2 BETA BETA INCOMPLETE%
+  [2019/04/18 v0.2a BETA BETA INCOMPLETE%
   utf8 output for qrcode (UF), based on puenc from Heiko Oberdiek]
 \DeclareFontEncoding{PUTF}{}{}
 \DeclareTextCommand{\`}{PUTF}[1]{#1\detokenize{\detokenize{^^cc^^80}}}% U+0300
@@ -2053,6 +2053,7 @@
 \DeclareTextCommand{\textBicycle}{PUTF}{\detokenize{^^f0^^9f^^9a^^b2}}%* U+1F6B2
 \DeclareTextCommand{\textGentsroom}{PUTF}{\detokenize{^^f0^^9f^^9a^^b9}}%* U+1F6B9
 \DeclareTextCommand{\textLadiesroom}{PUTF}{\detokenize{^^f0^^9f^^9a^^ba}}%* U+1F6BA
+\DeclareTextCommand{\textEmojiDuck}{PUTF}{\detokenize{^^f0^^9f^^a6^^86}}%U+1F986
 \DeclareTextCommand{\SS}{PUTF}{SS}%
 \DeclareTextCommand{\textcopyleft}{PUTF}{\detokenize{^^e2^^86^^84^^e2^^83^^9d}}% U+2184 U+20DD
 \DeclareTextCommand{\textccnc}{PUTF}{\detokenize{$^^e2^^83^^a3}}%* U+0024 U+20E0
