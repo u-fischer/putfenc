@@ -6,6 +6,8 @@
 
 A (virtual) fontencoding to enable with pdflatex the use of non-ascii input in qrcodes. To use it, put the def where LaTeX can find it.
 
+![qrcode](qrcode.PNG)
+
 See the putftest.tex for example of usage.
 
 ## Licence
