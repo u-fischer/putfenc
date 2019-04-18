@@ -4,7 +4,7 @@
 ![Date: 2019/04/18](https://img.shields.io/badge/date-2019/04/18-blue.svg?style=flat-square)
 [![License: LPPL1.3c ](https://img.shields.io/badge/license-LPPL1.3c-blue.svg?style=flat-square)](https://ctan.org/license/lppl1.3c)
 
-A (virtual) fontencoding to enable the use of non-ascii input in qrcodes. To use it, put the def where LaTeX can find it.
+A (virtual) fontencoding to enable with pdflatex the use of non-ascii input in qrcodes. To use it, put the def where LaTeX can find it.
 
 See the putftest.tex for example of usage.
 
