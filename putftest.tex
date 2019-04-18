@@ -1,0 +1,66 @@
+\documentclass[parskip=full-]{scrartcl}
+\usepackage{graphicx}
+\usepackage[PUTF, %lädt die Definitionen für den qrcode
+            LGR,  % wird benötigt für die utf8-Eingabe von αβδ
+            T1    % die normale Textkodierung
+            ]{fontenc}
+
+\usepackage{textcomp} %wird benötigt für die utf8-Eingabe von € und ¼½
+
+\usepackage{xpatch}
+\usepackage[forget]{qrcode} %forget damit qrcode nicht versucht die Sachen zu speichern
+
+\makeatletter
+%qrcode wird gepatcht, damit es zur anderen Kodierung wechselt:
+\xpatchcmd\qrcode@i{\begingroup}{\begingroup\fontencoding{PUTF}\fontfamily{pdf}\selectfont}{}{\show\failed}
+
+% Unterdrücken der aux-Ausgabe:
+\def\qr@writebinarymatrixtoauxfile#1{}%
+\makeatother
+
+%Ein proforma Schrift.
+\DeclareFontFamily{PUTF}{pdf}{}%
+\DeclareFontShape{PUTF}{pdf}{m}{n}{ <-> ecrm1000 }{}%
+\DeclareFontSubstitution{PUTF}{pdf}{m}{n}%
+
+\DeclareUnicodeCharacter{2740}{Blume}
+\begin{document}
+\section{QR Codes mit Umlauten}
+
+ Das Argument von \verb+\qrcode+ kann nun Umlaute und auch Symbole wie Emoji enthalten.
+
+ Direkte utf8-Eingabe \fbox{❀} ist möglich, aber nur wenn die utf8-Zeichen auch außerhalb des \verb+\qrcode+-Befehls nutzbar sind, ohne  eine derartige Fehlermeldung zu erzeugen:
+
+ \begin{verbatim}
+ ! Package inputenc Error: Unicode char ❀ (U+2740)
+ (inputenc)                not set up for use with LaTeX.
+ \end{verbatim}
+
+ Ggfs. muss man mit \verb+DeclareUnicodeCharacter+ (oder dem newunicodechar-Paket) eine Deklaration hinzufügen oder über Pakete (textcomp) oder Kodierungen (LGR) laden.
+ Die meisten Befehle wie \verb+\textPlane+ usw sind außerhalb des Arguments von \verb+\qrcode+ nicht nutzbar.
+
+
+\qrcode[nolink]{Grüße € é § ¼½αβδ
+                 # % & $  ^ _ ~
+                 \textFiveFlowerPetal ❀ \textPlane
+                 \textinfty\textint
+                 \textManFace \textLadiesroom \textEmojiSmileSunglass \textEmojiCalendar}%
+
+
+
+ \bigskip
+
+ Steht \verb+\qrcode+ in einem Argument, müssen \TeX-Sonderzeichen maskiert werden. Neue Zeilen kann man mit \verb+\textLF+ einbauen:
+
+\fbox{\qrcode[nolink]{Grüße € é § ¼½αβδ\textLF
+                 \# \% \& \$ \^ \_ \~\textLF
+                \textFiveFlowerPetal \textPlane\textLF
+                \textinfty\textint\textLF
+                \textManFace \textLadiesroom \textEmojiSmileSunglass \textEmojiCalendar
+                 }}%
+
+
+putfenc.def enthält \emph{nicht} für alle Unicodezeichen Definitionen. Insgesamt sind dort knapp 2000 enthalten. Es können aber problemlos weitere hinzugefügt werden.
+
+
+\end{document} 
